@@ -11,7 +11,7 @@ export const isWalletExist = async () => {
     await window.ethereum.request({ method: "eth_requestAccounts" });
     window.web3 = new Web3(window.ethereum);
     let web3 = new Web3(Web3.givenProvider);
-    let con_addr = "0xc8fBAf6Fc9331a4a97FB93FB743f97677CaF2627";
+    let con_addr = "0xC497d9aA44F8e88631EaBec474F5Ee646b0E9aCB";
     sampleContract = new web3.eth.Contract(sample_abi, con_addr);
     return true;
   }
@@ -20,6 +20,7 @@ export const isWalletExist = async () => {
 
   export const fetchDetails = async (_id, _callback) => {
     console.log(_id);
+    // _id = "0x4a8e647843e93b6d9a4c3b704e31ca21b27f386aa2af657e8c0995ec226462dd"
     const wallet = await isWalletExist();
     if (wallet) {
       const accs = await window.ethereum.enable();
@@ -93,7 +94,8 @@ export const verifyAndNext = async(prodID, nextAddr ,loc)=>{
     const acc = accs[0];
     owner = acc;
     console.log(prodID, nextAddr, loc)
-    let gas = await sampleContract.methods.next_location(prodID, nextAddr, loc).estimateGas();
+    // let gas = await sampleContract.methods.next_location(prodID, nextAddr, loc).estimateGas();
+    let gas = 99999;
     console.log("gas", gas);
     console.log("ow", owner)
     return sampleContract.methods.next_location(prodID, nextAddr, loc).send({

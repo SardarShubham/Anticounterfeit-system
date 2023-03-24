@@ -24,7 +24,13 @@ const Intermediate = () => {
         verifyAndNext(prodID, nextAddr,location )
         .then(res=>{
           console.log(res)
-          console.log("res", res.events?.verify?.returnValues?.ret_value)
+          console.log("res", res.events?.added_next?.returnValues?.ret_value)
+          if(res.events?.added_next?.returnValues?.ret_value){
+            alert("Location Updated Successfully!")
+          }
+          else{
+            alert("UnAuthoried Intermediate :(")
+          }
         }).catch(err=>{
           alert("Smth Went Wrong!")
           console.log(err)

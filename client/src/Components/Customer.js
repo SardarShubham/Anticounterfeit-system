@@ -44,11 +44,11 @@ const Customer = (props) => {
         />
     <p className='product_text'>Product ID: {id}</p>
     <button onClick={fetchData}>Get Details</button>
-    <p>
-        <span>Name : {product.name}</span>
-        <span>Manu. Date : {product.man_date}</span>
-        <span>Expiry : {product.expiry}</span>
-        <span>MRP: {product.mrp}</span>
+    <p className='info-table'>
+        <span>Name : {product.name}</span><br/>
+        <span>Manu. Date : {product.man_date}</span><br/>
+        <span>Expiry : {product.expiry}</span><br/>
+        <span>MRP: {product.mrp}</span><br/>
         <span>In Pack of : {product.packof}</span>
     </p>
     </div>
