@@ -258,3 +258,25 @@ li{
 .header-div .header-right li{
   margin-right: 1rem;
 }
+
+.grid-cont{
+  height: 100vh;
+  margin-top: 10rem;
+  background-color: #ffffff;
+}
+.grid-content h3{
+  color: rgb(30, 96, 251);
+}
+.grid-content h4{
+  font-weight: lighter;
+  padding: 0 3rem 0 3rem;
+}
+a{
+  text-decoration: none;
+}
+.banner-img{
+  background-color: #E0E0E0;
+  width: 100%;
+  margin-top: 1rem;
+  height: 19rem;
+}

@@ -68,7 +68,11 @@ export default function BasicTabs() {
         </Stack>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+      <h2 style={{"color":"#000000"}}>Login to your Account</h2>
+      <Stack spacing={2} direction="column">
+        <TextField id="outlined-basic" label="Metamask Wallet Token" variant="outlined"  size='small'/>
+        <Button variant="contained">Log in</Button>
+        </Stack>
       </TabPanel>
     </Box>
   );

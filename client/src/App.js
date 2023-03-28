@@ -7,6 +7,7 @@ import Intermediate from "./Components/Intermediate";
 import Customer from "./Components/Customer";
 import Chain from "./Components/Chain";
 import Header from "./Components/Header";
+import Footer from "./Reusables/Footer";
 import HomePage from "./Components/HomePage";
 function App() {
   return (
@@ -21,7 +22,9 @@ function App() {
         <Route exact path="/verify" element={<Customer />} />
         <Route exact path="/track" element={<Chain />} />
       </Routes>
+
     </div>
+    <Footer/>
     </>
 
   );
