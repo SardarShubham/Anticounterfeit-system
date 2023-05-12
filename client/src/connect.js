@@ -11,7 +11,7 @@ export const isWalletExist = async () => {
     await window.ethereum.request({ method: "eth_requestAccounts" });
     window.web3 = new Web3(window.ethereum);
     let web3 = new Web3(Web3.givenProvider);
-    let con_addr = "0xc8fBAf6Fc9331a4a97FB93FB743f97677CaF2627";
+    let con_addr = "0x1da9155ABf521a70D295BBEDc8B6A9B19EE624fe";
     sampleContract = new web3.eth.Contract(sample_abi, con_addr);
     return true;
   }
@@ -19,6 +19,7 @@ export const isWalletExist = async () => {
 };
 
   export const fetchDetails = async (_id, _callback) => {
+    // _id = "0x8b85578df4f8ccad6d617eea0907c7bba879b1dda139df26c351b8f432a32604";
     console.log(_id);
     const wallet = await isWalletExist();
     if (wallet) {
@@ -87,20 +88,46 @@ export const remove = async (id) => {
 };
 
 export const verifyAndNext = async(prodID, nextAddr ,loc)=>{
+  // prodID = "0x8b85578df4f8ccad6d617eea0907c7bba879b1dda139df26c351b8f432a32604";
+  // nextAddr = "0x9573c561cae253dAb2cf64f0F993252Ea66300F3";
+  // loc = "D";
   const wallet = await isWalletExist();
   if (wallet) {
     const accs = await window.ethereum.enable();
     const acc = accs[0];
     owner = acc;
-    console.log(prodID, nextAddr, loc)
-    let gas = await sampleContract.methods.next_location(prodID, nextAddr, loc).estimateGas();
-    console.log("gas", gas);
     console.log("ow", owner)
-    return sampleContract.methods.next_location(prodID, nextAddr, loc).send({
+
+    console.log(prodID, nextAddr, loc)
+    console.log(typeof(prodID));
+    console.log(typeof(nextAddr));
+    console.log(typeof(loc));
+    // let gas = await sampleContract.methods.next_location(
+    //   prodID,
+    //   nextAddr, 
+    //   loc
+    //    ).estimateGas();
+    let gas = 99999;
+    console.log("gas", gas);
+    return sampleContract.methods.next_location(
+      prodID,
+      nextAddr, 
+      loc
+      ).send({
       from: acc,
       gas,
     });
+
+    // let g = await sampleContract.methods.verify_user(prodID)
+    // .estimateGas();
+    // console.log(g);
+    // return sampleContract.methods.verify_user(prodID)
+    // .send({
+    //   from : acc,
+    //   g
+    // });
   }
+
 };
 
 

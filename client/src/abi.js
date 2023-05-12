@@ -1,4 +1,4 @@
-export const sample_abi =  [
+export const sample_abi = [
   {
     "anonymous": false,
     "inputs": [
@@ -31,18 +31,33 @@ export const sample_abi =  [
       {
         "components": [
           {
+            "internalType": "bool",
+            "name": "isvalid",
+            "type": "bool"
+          },
+          {
             "internalType": "string",
             "name": "name",
             "type": "string"
           },
           {
+            "internalType": "string",
+            "name": "retailerName",
+            "type": "string"
+          },
+          {
             "internalType": "address",
-            "name": "next_addr",
+            "name": "currentOwner",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "retailerAddr",
             "type": "address"
           },
           {
             "internalType": "uint256",
-            "name": "date",
+            "name": "manufacturingDate",
             "type": "uint256"
           },
           {
@@ -52,7 +67,7 @@ export const sample_abi =  [
           },
           {
             "internalType": "uint256",
-            "name": "mrp",
+            "name": "price",
             "type": "uint256"
           },
           {
@@ -73,6 +88,19 @@ export const sample_abi =  [
       }
     ],
     "name": "details",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "bool",
+        "name": "ret_value",
+        "type": "bool"
+      }
+    ],
+    "name": "invalidated",
     "type": "event"
   },
   {
@@ -112,18 +140,33 @@ export const sample_abi =  [
     "name": "Products",
     "outputs": [
       {
+        "internalType": "bool",
+        "name": "isvalid",
+        "type": "bool"
+      },
+      {
         "internalType": "string",
         "name": "name",
         "type": "string"
       },
       {
+        "internalType": "string",
+        "name": "retailerName",
+        "type": "string"
+      },
+      {
         "internalType": "address",
-        "name": "next_addr",
+        "name": "currentOwner",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "retailerAddr",
         "type": "address"
       },
       {
         "internalType": "uint256",
-        "name": "date",
+        "name": "manufacturingDate",
         "type": "uint256"
       },
       {
@@ -133,7 +176,7 @@ export const sample_abi =  [
       },
       {
         "internalType": "uint256",
-        "name": "mrp",
+        "name": "price",
         "type": "uint256"
       },
       {
@@ -153,8 +196,13 @@ export const sample_abi =  [
         "type": "string"
       },
       {
+        "internalType": "string",
+        "name": "_retailerName",
+        "type": "string"
+      },
+      {
         "internalType": "address",
-        "name": "_addr",
+        "name": "_retailerAddr",
         "type": "address"
       },
       {
@@ -164,7 +212,7 @@ export const sample_abi =  [
       },
       {
         "internalType": "uint256",
-        "name": "_mrp",
+        "name": "_price",
         "type": "uint256"
       },
       {
@@ -174,7 +222,7 @@ export const sample_abi =  [
       },
       {
         "internalType": "string",
-        "name": "_loc",
+        "name": "_location",
         "type": "string"
       }
     ],
@@ -247,6 +295,19 @@ export const sample_abi =  [
       }
     ],
     "name": "get_details",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "_id",
+        "type": "bytes32"
+      }
+    ],
+    "name": "invaidate",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
