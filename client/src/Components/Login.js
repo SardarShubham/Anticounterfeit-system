@@ -7,6 +7,7 @@ const Login = () => {
     const nav = useNavigate()
   const [address, setaddress] = useState();
   const [balance, setbalance] = useState();
+  
   const connectWallet = (user) => {
     if (window.ethereum) {
       console.log("Have metamask");

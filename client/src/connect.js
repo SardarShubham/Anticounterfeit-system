@@ -21,6 +21,7 @@ export const isWalletExist = async () => {
   export const fetchDetails = async (_id, _callback) => {
     // _id = "0x8b85578df4f8ccad6d617eea0907c7bba879b1dda139df26c351b8f432a32604";
     console.log(_id);
+    // _id = "0x4a8e647843e93b6d9a4c3b704e31ca21b27f386aa2af657e8c0995ec226462dd"
     const wallet = await isWalletExist();
     if (wallet) {
       const accs = await window.ethereum.enable();
@@ -96,6 +97,10 @@ export const verifyAndNext = async(prodID, nextAddr ,loc)=>{
     const accs = await window.ethereum.enable();
     const acc = accs[0];
     owner = acc;
+    console.log(prodID, nextAddr, loc)
+    // let gas = await sampleContract.methods.next_location(prodID, nextAddr, loc).estimateGas();
+    let gas = 99999;
+    console.log("gas", gas);
     console.log("ow", owner)
 
     console.log(prodID, nextAddr, loc)
@@ -107,7 +112,7 @@ export const verifyAndNext = async(prodID, nextAddr ,loc)=>{
     //   nextAddr, 
     //   loc
     //    ).estimateGas();
-    let gas = 99999;
+    // let gas = 99999;
     console.log("gas", gas);
     return sampleContract.methods.next_location(
       prodID,
