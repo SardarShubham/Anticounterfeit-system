@@ -64,7 +64,7 @@ export default function BasicTabs() {
         <TextField id="outlined-basic" label="Password" variant="outlined"  size='small'/>
         <TextField id="outlined-basic" label="Metamask Wallet Token" variant="outlined"  size='small'/>
         <Button variant="contained">Log in</Button>
-        <h4>New User? <a href='/'>Register</a></h4>
+        <h4>New User? <a href='/register'>Register</a></h4>
         </Stack>
       </TabPanel>
       <TabPanel value={value} index={1}>

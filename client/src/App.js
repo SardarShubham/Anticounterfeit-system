@@ -9,6 +9,7 @@ import Chain from "./Components/Chain";
 import Header from "./Components/Header";
 import Footer from "./Reusables/Footer";
 import HomePage from "./Components/HomePage";
+import Register from "./Components/Register";
 function App() {
   return (
     <>      <Header />
@@ -16,6 +17,8 @@ function App() {
       {/* <Dashboard/> */}
       <Routes>
         <Route exact path="/" element={<HomePage />} />
+        <Route exact path="/register" element={<Register />} />
+        
         {/* <Route exact path='/' element={<Login/>}/> */}
         <Route exact path="/manufacturer" element={<Manufacturer />} />
         <Route exact path="/intermediate" element={<Intermediate />} />
