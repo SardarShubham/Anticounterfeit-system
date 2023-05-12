@@ -49,6 +49,12 @@ const Register = () => {
       })
       .then((res) => {
           alert("Successfully Registered!!")
+          setName('');
+          setEmail('');
+          setRole('');
+          setLocaton('');
+          setPassword('');
+          setAddress('');
       })
       .catch((err) => {
         console.log('Error in CreateBook!');
@@ -103,7 +109,10 @@ const Register = () => {
             required={'true'}
           />
           <TextField
+            
             id="outlined-password"
+            type="password"
+
             label="Password"
             onChange={(e) => {
               setPassword(e.target.value);

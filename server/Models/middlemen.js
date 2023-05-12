@@ -18,6 +18,7 @@ const registerSchema = mongoose.Schema({
     required: true,
   },
   walladdr: {
+    unique: true,
     type: String,
     required: true,
   },
