@@ -1,5 +1,6 @@
 /blockchain/build
 /client/node_modules
+/client/package-lock.json
 docs.txt
 /client/.pnp
 .pnp.js
