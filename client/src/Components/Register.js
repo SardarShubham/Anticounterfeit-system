@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-
+import axios from "axios";
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
 import { useState } from "react";
@@ -10,7 +10,9 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [location, setLocaton] = useState("");
-  const [address, setAddress] = useState("");
+  const [address, setAddress] = useState(null);
+  const [role, setRole] = useState("");
+  
 
   const getWalletAddress=()=>{
     if (window.ethereum) {
@@ -27,12 +29,30 @@ const Register = () => {
       });
   }
 
-  const handleSubmit =()=>{
-    if(!name || !email || !password || !location || !address){
-      alert("Please enter all the fields!")
-      return;
-    }
+  const handleSubmit =(e)=>{
     
+    // if(!name || !email || !password || !location || !address || !role){
+    //   alert("Please enter all the fields!")
+    //   return;
+    // }
+    
+    e.preventDefault();
+
+    axios
+      .post('http://localhost:5000/register', {
+        'name': name,
+        'email': email,
+        'password': password,
+        'location': location,
+        'walladdr' : address[0],
+        'role': role
+      })
+      .then((res) => {
+          alert("Successfully Registered!!")
+      })
+      .catch((err) => {
+        console.log('Error in CreateBook!');
+      });
   }
 
   return (
@@ -54,6 +74,15 @@ const Register = () => {
       >
         <Stack>
           <h1 style={{ color: "#000000" }}>Middlemen</h1>
+          <TextField
+            id="outlined-role"
+            label="Role"
+            onChange={(e) => {
+              setRole(e.target.value);
+            }}
+            value={role}
+            required={'true'}
+          />
 
           <TextField
             id="outlined-name"
