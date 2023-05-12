@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
 
 const registerSchema = mongoose.Schema({
-  uid: {
-    type: String,
-    required: true,
-  },
+  // uid: {
+  //   type: String,
+  //   required: true,
+  // },
   name: {
     type: String,
     required: true,
