@@ -18,17 +18,17 @@ export default function Chain() {
       ];
 
     const onTrack = ()=>{
-        if(!prodID){
-            alert("Enter Id")
-            return;
-        }
-        else{
+        // if(!prodID){
+        //     alert("Enter Id")
+        //     return;
+        // }
+        // else{
 
-            fetchDetails(prodID, res =>{
-                setChain(res.locations)
-                console.log(res.locations);
-            });
-        }
+        //     fetchDetails(prodID, res =>{
+        //         setChain(res.locations)
+        //         console.log(res.locations);
+        //     });
+        // }
     }
 
     return(

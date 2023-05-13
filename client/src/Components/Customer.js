@@ -13,17 +13,17 @@ const Customer = (props) => {
   })
 
   const fetchData = () => {
-    fetchDetails(id, res =>{
-        console.log(res);
-        // let obj = {
-        //     name : res.name,
-        //     man_date : res.date,
-        //     expiry : res.expiry,
-        //     mrp : res.mrp,
-        //     packof : res.packof
-        // }
-        // setProduct(obj);
-    });
+    // fetchDetails(id, res =>{
+    //     console.log(res);
+    //     // let obj = {
+    //     //     name : res.name,
+    //     //     man_date : res.date,
+    //     //     expiry : res.expiry,
+    //     //     mrp : res.mrp,
+    //     //     packof : res.packof
+    //     // }
+    //     // setProduct(obj);
+    // });
  
   }
   return (
