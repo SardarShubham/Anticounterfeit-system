@@ -10,6 +10,8 @@ import Header from "./Components/Header";
 import Footer from "./Reusables/Footer";
 import HomePage from "./Components/HomePage";
 import Register from "./Components/Register";
+import ManufcDB from "./Components/ManufDB";
+import MiddlemenDB from "./Components/MiddlemenDB";
 function App() {
   return (
     <>      <Header />
@@ -21,6 +23,8 @@ function App() {
         
         {/* <Route exact path='/' element={<Login/>}/> */}
         <Route exact path="/manufacturer" element={<Manufacturer />} />
+        <Route exact path="/dashboard/manufacturer" element={<ManufcDB />} />
+        <Route exact path="/dashboard/middlemen" element={<MiddlemenDB />} />        
         <Route exact path="/intermediate" element={<Intermediate />} />
         <Route exact path="/verify" element={<Customer />} />
         <Route exact path="/track" element={<Chain />} />

@@ -21,6 +21,8 @@ app.get('/', (req, res) => res.send('Hello world!'));
 //     // .then(middlemen => res.json({ msg: 'Middlemen added successfully' }))
 //     // .catch(err => res.status(400).json({ error: 'Unable to add this book' }));
 // });
+
+
 app.post('/register', (req, res) => {
     console.log(req.body)
     Middleman.create(req.body)
