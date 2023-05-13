@@ -5,7 +5,19 @@ import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
-import StepContent from '@mui/material/StepContent';
+import Paper from '@mui/material/Paper';
+import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
+import Grid from '@mui/material/Grid';
+
+const Item = styled(Paper)(({ theme }) => ({
+...theme.typography.body2,
+textAlign: 'center',
+color: theme.palette.text.secondary,
+// height: 60,
+lineHeight: '60px',
+padding: '25px'
+}));
+
 
 export default function Chain() {
     const [prodID, setProdID] = useState(null);
@@ -33,7 +45,7 @@ export default function Chain() {
 
     return(
 
-        <div style={{background:'white'}}>
+        <div>
             <h1>Tracking Product - {prodID}</h1>
             <input className="man_inp" type={"text"} placeholder={"ID"} onChange={(e)=>setProdID(e.target.value)}/>
             <button onClick={onTrack}>Track</button>
@@ -49,19 +61,61 @@ export default function Chain() {
                 }
             </div> */}
             
-            <Box sx={{ width: '100%' }}>
-            <Stepper activeStep={1}  orientation="vertical">
-                {steps.map((label) => (
-                <Step key={label}>
-                    <StepLabel>{label}</StepLabel>
-                    <StepContent>
-                        {/* <Typography>{"mandd datae 343"}</Typography> */}
-                        whatever
-                    </StepContent>
-                </Step>
-                ))}
-            </Stepper>
-            </Box>
+            <Grid container spacing={4}>
+                <Grid item sm={6}>
+                    <Box 
+                        sx={{
+                            bgcolor: 'background.default'
+                        }}
+                        // className="supply_chain"
+                        >   
+                        <Item elevation={8}>
+                            <h1>Product Supply Chain Details</h1>
+                            <Stepper activeStep={1}  orientation="vertical">
+                                {steps.map((item, i) => (
+                                <Step key={i}>
+                                    <StepLabel>
+                                        <span>Samsung, New Chicago</span>
+                                        <br/>
+                                        <span>Transaction Date: 23/01/2023</span>
+                                    </StepLabel>
+                                </Step>
+                                ))}
+                            </Stepper>
+                        </Item>
+                    </Box>
+                </Grid>
+                <Grid item sm={6}>
+
+                    <Box 
+                        sx={{
+                            bgcolor: 'background.default',
+                            textAlign:'left',
+                            paddingLeft: '40px'
+                        }}
+                        // className="supply_chain"
+                        >   
+                        {/* <Item elevation={8}> */}
+                            <h2>Product Details</h2>
+                            <span>Product Id : abcd</span>
+                            <br/>
+                            <span>Name: </span>
+                            <br/>
+                            <span>Manufacturer: </span>
+                            <br/>
+                            <span>Retailer:</span>
+                            <br/>
+                            <span>MRP:</span>
+                            <br/>
+                            <span>Sold in pack of: // or individual</span>
+                        {/* </Item> */}
+                    </Box> 
+                    <Box>
+                        <h1>The Product is Genuine</h1>
+                    </Box>     
+                </Grid>
+
+            </Grid>
         </div>
     )
 }
