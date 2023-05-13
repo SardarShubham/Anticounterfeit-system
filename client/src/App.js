@@ -11,6 +11,7 @@ import ManufcDB from "./Components/ManufDB";
 import MiddlemenDB from "./Components/MiddlemenDB";
 import AdminDB from "./Components/AdminDB";
 import AddPRoduct from "./Components/AddProduct";
+import NextmMiddlemen from "./Components/NextMiddlemen";
 function App() {
   return (
     <>      <Header />
@@ -23,7 +24,10 @@ function App() {
         <Route exact path='/addproduct' element={<AddPRoduct/>}/>
 
         <Route exact path="/dashboard/manufacturer" element={<ManufcDB />} />
+
         <Route exact path="/dashboard/middlemen" element={<MiddlemenDB />} /> 
+        <Route exact path="/nextmen" element={<NextmMiddlemen />} /> 
+
         <Route exact path="/dashboard/admin" element={<AdminDB />} /> 
 
         <Route exact path="/verify" element={<Customer />} />
