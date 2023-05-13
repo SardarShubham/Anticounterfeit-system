@@ -138,9 +138,12 @@ const AddPRoduct = () => {
             Add Product
           </Button>
 
-          {isProductAdded && <QR id={"23f"} name={productName} />}
+          {(isProductAdded)? 
+            <QR id={"23f"} name={productName} /> 
+            :
+          <span style={{"paddingTop":"1rem", "color":"#000000"}}>Generated QR will be shown here.</span>}
 
-          <Button variant="contained" style={{ marginTop: "2rem" }}>
+          <Button variant="contained" style={{ marginTop: "2rem" }} disabled={isProductAdded}>
             Print QR Code
           </Button>
         </Stack>

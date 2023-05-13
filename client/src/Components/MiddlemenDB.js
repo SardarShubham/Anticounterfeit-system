@@ -8,21 +8,25 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+let navigate;
 
 function createData(srno, name, id, from, status, action) {
     return {srno, name, id, status, from, action};
 }
  
 const rows = [
+    
     createData('1', 'Adidas Air', 'add67','Chennai', <Button variant="outlined">Scan QR</Button>,<Button variant="outlined">Invalidate</Button>),
-    createData('2', 'Burberry', 'brb456','Pune', <Button variant="outlined">Scan QR</Button>,<Button variant="outlined">Invalidate</Button>),
+    createData('2', 'Burberry', 'brb456','Pune', <Button variant="outlined">Scan QR</Button>,<Button variant="outlined" onClick={()=>{navigate("/nextmen")}}>Send Forward</Button>),
     createData('3', 'Versace', 'vsc78','Akola', <Button variant="outlined">Scan QR</Button>,<Button variant="outlined">Invalidate</Button>),
-    createData('4', 'LV', 'lv098','Kolkata', <Button variant="outlined">Scan QR</Button>,<Button variant="outlined">Invalidate</Button>),
+    createData('4', 'LV', 'lv098','Kolkata', <Button variant="outlined">Scan QR</Button>,<Button variant="outlined" onClick={()=>{navigate("/nextmen")}}>Send Forward</Button>),
     createData('5', 'Amiri XC', 'amr145','Mumbai', <Button variant="outlined">Scan QR</Button>,<Button variant="outlined">Invalidate</Button>),
     ];
 
 const MiddlemenDB = () => {
-    
+    navigate = useNavigate();
+
     return ( 
         <>
         <h1>Middlemen's Dashboard</h1>
