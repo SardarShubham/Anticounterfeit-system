@@ -22,6 +22,7 @@ contract conV1 {
         uint packof;
         uint loc_Size;
         mapping(uint => Transit) history;
+        string status; // INTRANSIT, REACHED, SOLD
     }
 
     // bare minimum product struct
@@ -32,6 +33,7 @@ contract conV1 {
         string manufacturerName;
         address manufacturerAddress;
         address currentOwner;
+        string status;
     }
 
     uint totalProducts = 0;
@@ -61,6 +63,7 @@ contract conV1 {
         uint price,
         uint packof,
         uint loc_Size,
+        string status,
         Transit[] history
     );
     event getall(MinProduct[] products);
@@ -96,6 +99,7 @@ contract conV1 {
         newP.packof = _packof; 
         newP.loc_Size = 1;
         newP.history[0] = newtransit;
+        newP.status = "INTRANSIT";
         ProductIDs[totalProducts] = id;
         totalProducts++;
         emit created(id);
@@ -122,6 +126,7 @@ contract conV1 {
                 _loc,
                 block.timestamp
             );
+            if (P.retailerAddr == msg.sender) P.status = "REACHED";
             P.currentOwner = _addr;
             P.history[P.loc_Size] = newtransit;
             P.loc_Size++;
@@ -148,6 +153,7 @@ contract conV1 {
             P.price,
             P.packof,
             P.loc_Size,
+            P.status,
             ret_locs
         );
     }
@@ -156,6 +162,7 @@ contract conV1 {
     function invaidate(bytes32 _id) public exists(_id){
         if (Products[_id].isvalid == true){
             Products[_id].isvalid = false;
+            Products[_id].status = "SOLD";
             emit invalidated(true);
         }
         else emit invalidated(false);
@@ -171,7 +178,8 @@ contract conV1 {
                 Products[ProductIDs[i]].name,
                 Products[ProductIDs[i]].manufacturerName,
                 Products[ProductIDs[i]].manufacturerAddress,
-                Products[ProductIDs[i]].currentOwner
+                Products[ProductIDs[i]].currentOwner,
+                Products[ProductIDs[i]].status
             );
         }
         emit getall(prodArray);

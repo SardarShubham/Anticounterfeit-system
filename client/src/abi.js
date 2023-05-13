@@ -89,6 +89,12 @@ export const sample_abi = [
         "type": "uint256"
       },
       {
+        "indexed": false,
+        "internalType": "string",
+        "name": "status",
+        "type": "string"
+      },
+      {
         "components": [
           {
             "internalType": "string",
@@ -149,6 +155,11 @@ export const sample_abi = [
             "internalType": "address",
             "name": "currentOwner",
             "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "status",
+            "type": "string"
           }
         ],
         "indexed": false,
@@ -258,6 +269,11 @@ export const sample_abi = [
         "internalType": "uint256",
         "name": "loc_Size",
         "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "status",
+        "type": "string"
       }
     ],
     "stateMutability": "view",
