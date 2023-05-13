@@ -7,7 +7,7 @@ const QR=({id,name})=>{
     },[])
     return(
         <>
-            <h1>QR for {name}</h1>
+            <h1 style={{"color":"#000000"}}>QR for {name}</h1>
             <img className="qr_img" src={src}/>
         </>
     )
