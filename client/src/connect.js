@@ -11,7 +11,7 @@ export const isWalletExist = async () => {
     await window.ethereum.request({ method: "eth_requestAccounts" });
     window.web3 = new Web3(window.ethereum);
     let web3 = new Web3(Web3.givenProvider);
-    let con_addr = "0x1da9155ABf521a70D295BBEDc8B6A9B19EE624fe";
+    let con_addr = "0x4dA95Dc5A8bcf36bEaEe693b2e3E9aFF82768A32";
     sampleContract = new web3.eth.Contract(sample_abi, con_addr);
     return true;
   }
@@ -21,7 +21,7 @@ export const isWalletExist = async () => {
   export const fetchDetails = async (_id, _callback) => {
     // _id = "0x8b85578df4f8ccad6d617eea0907c7bba879b1dda139df26c351b8f432a32604";
     console.log(_id);
-    // _id = "0x4a8e647843e93b6d9a4c3b704e31ca21b27f386aa2af657e8c0995ec226462dd"
+    _id = "0xd0431b44d3911afee99f5fe6774d8e5ab50d24030cb04d45a60597cbf09f9696"
     const wallet = await isWalletExist();
     if (wallet) {
       const accs = await window.ethereum.enable();
@@ -52,6 +52,16 @@ export const isWalletExist = async () => {
     }
   };
 export const create = async (name, accAddress, exp_date, mrp, packOf, location) => {
+  // dummy data
+  let _name, _retailerName, _retialerAddress, _expiry, _price, _packof, _location;
+  _name = "Oppo Mobile";
+  _retailerName = "Dhankawadi Electronics";
+  _retialerAddress = "0x583031D1113aD414F02576BD6afaBfb302140225";
+  _expiry = 0;
+  _price = 4999;
+  _packof = 1;
+  _location = "Banglore";
+
   console.log(name, accAddress, exp_date, mrp, packOf, location);
   const wallet = await isWalletExist();
   if (wallet) {
@@ -59,16 +69,17 @@ export const create = async (name, accAddress, exp_date, mrp, packOf, location) 
     let acc = accs[0];
     console.log(typeof accAddress, accAddress);
 
-    let gas = await sampleContract.methods
-      .create(name, accAddress, exp_date, mrp, packOf,location)
-      .estimateGas();
-    console.log("gas", gas);
+    // let _gas = await sampleContract.methods
+    //   .create(_name, _retailerName, _retialerAddress, _expiry, _price, _packof, _location)
+    //   .estimateGas();
+    // console.log("gas", _gas);
+    // let _gas = 99999;
 
     return sampleContract.methods
-      .create(name, accAddress, exp_date, mrp, packOf, location)
+      .create(_name, _retailerName, _retialerAddress, _expiry, _price, _packof, _location)
       .send({
         from: acc,
-        gas,
+        gas:'1000000',
       });
   }
 };

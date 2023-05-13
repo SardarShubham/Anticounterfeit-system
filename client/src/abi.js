@@ -29,7 +29,102 @@ export const sample_abi = [
     "anonymous": false,
     "inputs": [
       {
+        "indexed": false,
+        "internalType": "bool",
+        "name": "isvalid",
+        "type": "bool"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "manufacturerName",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "retailerName",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "manufacturerAddress",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "currentOwner",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "retailerAddr",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "price",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "packof",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "loc_Size",
+        "type": "uint256"
+      },
+      {
         "components": [
+          {
+            "internalType": "string",
+            "name": "int_name",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "location",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "date",
+            "type": "uint256"
+          }
+        ],
+        "indexed": false,
+        "internalType": "struct conV1.Transit[]",
+        "name": "history",
+        "type": "tuple[]"
+      }
+    ],
+    "name": "details",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "bytes32",
+            "name": "id",
+            "type": "bytes32"
+          },
           {
             "internalType": "bool",
             "name": "isvalid",
@@ -42,52 +137,27 @@ export const sample_abi = [
           },
           {
             "internalType": "string",
-            "name": "retailerName",
+            "name": "manufacturerName",
             "type": "string"
+          },
+          {
+            "internalType": "address",
+            "name": "manufacturerAddress",
+            "type": "address"
           },
           {
             "internalType": "address",
             "name": "currentOwner",
             "type": "address"
-          },
-          {
-            "internalType": "address",
-            "name": "retailerAddr",
-            "type": "address"
-          },
-          {
-            "internalType": "uint256",
-            "name": "manufacturingDate",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "expiry",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "price",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "packof",
-            "type": "uint256"
-          },
-          {
-            "internalType": "string[]",
-            "name": "locations",
-            "type": "string[]"
           }
         ],
         "indexed": false,
-        "internalType": "struct conV1.Product",
-        "name": "ret_data",
-        "type": "tuple"
+        "internalType": "struct conV1.MinProduct[]",
+        "name": "products",
+        "type": "tuple[]"
       }
     ],
-    "name": "details",
+    "name": "getall",
     "type": "event"
   },
   {
@@ -151,8 +221,18 @@ export const sample_abi = [
       },
       {
         "internalType": "string",
+        "name": "manufacturerName",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
         "name": "retailerName",
         "type": "string"
+      },
+      {
+        "internalType": "address",
+        "name": "manufacturerAddress",
+        "type": "address"
       },
       {
         "internalType": "address",
@@ -166,22 +246,17 @@ export const sample_abi = [
       },
       {
         "internalType": "uint256",
-        "name": "manufacturingDate",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "expiry",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
         "name": "price",
         "type": "uint256"
       },
       {
         "internalType": "uint256",
         "name": "packof",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "loc_Size",
         "type": "uint256"
       }
     ],
@@ -192,7 +267,12 @@ export const sample_abi = [
     "inputs": [
       {
         "internalType": "string",
-        "name": "_name",
+        "name": "_ProductName",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_manuName",
         "type": "string"
       },
       {
@@ -204,11 +284,6 @@ export const sample_abi = [
         "internalType": "address",
         "name": "_retailerAddr",
         "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_expiry",
-        "type": "uint256"
       },
       {
         "internalType": "uint256",
@@ -271,6 +346,11 @@ export const sample_abi = [
         "type": "bytes32"
       },
       {
+        "internalType": "string",
+        "name": "_name",
+        "type": "string"
+      },
+      {
         "internalType": "address",
         "name": "_addr",
         "type": "address"
@@ -308,6 +388,13 @@ export const sample_abi = [
       }
     ],
     "name": "invaidate",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "get_all",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
