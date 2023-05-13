@@ -15,10 +15,10 @@ function createData(srno, name, id, status, action) {
  
 const rows = [
     createData('1', 'Nike Air Jordan', 'nike123', 'In transit',<Button variant="outlined">Invalidate</Button>),
-    createData('1', 'Nike Air Jordan', 'nike123', 'In transit',<Button variant="outlined">Invalidate</Button>),
-    createData('1', 'Nike Air Jordan', 'nike123', 'In transit',<Button variant="outlined">Invalidate</Button>),
-    createData('1', 'Nike Air Jordan', 'nike123', 'In transit',<Button variant="outlined">Invalidate</Button>),
-    createData('1', 'Nike Air Jordan', 'nike123', 'In transit',<Button variant="outlined">Invalidate</Button>),
+    createData('2', 'Nike Air Jordan', 'nike123', 'In transit',<Button variant="outlined">Invalidate</Button>),
+    createData('3', 'Nike Air Jordan', 'nike123', 'In transit',<Button variant="outlined">Invalidate</Button>),
+    createData('4', 'Nike Air Jordan', 'nike123', 'In transit',<Button variant="outlined">Invalidate</Button>),
+    createData('5', 'Nike Air Jordan', 'nike123', 'In transit',<Button variant="outlined">Invalidate</Button>),
     ];
 
 const ManufcDB = () => {

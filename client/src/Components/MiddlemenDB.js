@@ -9,16 +9,16 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Button } from '@mui/material';
 
-function createData(srno, name, id, status, action) {
-    return {srno, name, id, status, action};
+function createData(srno, name, id, from, status, action) {
+    return {srno, name, id, status, from, action};
 }
  
 const rows = [
-    createData('1', 'Nike Air Jordan', 'nike123', 'In transit',<Button variant="outlined">Invalidate</Button>),
-    createData('1', 'Nike Air Jordan', 'nike123', 'In transit',<Button variant="outlined">Invalidate</Button>),
-    createData('1', 'Nike Air Jordan', 'nike123', 'In transit',<Button variant="outlined">Invalidate</Button>),
-    createData('1', 'Nike Air Jordan', 'nike123', 'In transit',<Button variant="outlined">Invalidate</Button>),
-    createData('1', 'Nike Air Jordan', 'nike123', 'In transit',<Button variant="outlined">Invalidate</Button>),
+    createData('1', 'Adidas Air', 'add67','Chennai', <Button variant="outlined">Scan QR</Button>,<Button variant="outlined">Invalidate</Button>),
+    createData('2', 'Burberry', 'brb456','Pune', <Button variant="outlined">Scan QR</Button>,<Button variant="outlined">Invalidate</Button>),
+    createData('3', 'Versace', 'vsc78','Akola', <Button variant="outlined">Scan QR</Button>,<Button variant="outlined">Invalidate</Button>),
+    createData('4', 'LV', 'lv098','Kolkata', <Button variant="outlined">Scan QR</Button>,<Button variant="outlined">Invalidate</Button>),
+    createData('5', 'Amiri XC', 'amr145','Mumbai', <Button variant="outlined">Scan QR</Button>,<Button variant="outlined">Invalidate</Button>),
     ];
 
 const MiddlemenDB = () => {
@@ -42,7 +42,10 @@ const MiddlemenDB = () => {
                                 PRODUCT ID
                             </TableCell>
                             <TableCell align="right">
-                                STATUS
+                                FROM
+                            </TableCell>
+                            <TableCell align="right">
+                                QR SCAN 
                             </TableCell>
                             <TableCell align="right">
                                 ACTION
@@ -65,6 +68,9 @@ const MiddlemenDB = () => {
                                 </TableCell>
                                 <TableCell align="right">
                                     {row.id}
+                                </TableCell>
+                                <TableCell align="right">
+                                    {row.from}
                                 </TableCell>
                                 <TableCell align="right">
                                     {row.status}
