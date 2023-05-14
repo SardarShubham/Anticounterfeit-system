@@ -128,7 +128,7 @@ export default function Chain() {
                                 <br/>
                                 <span>MRP: {productData.price}</span>
                                 <br/>
-                                <span>Sold in pack of: // or individual {productData.packof}</span>
+                                <span>Sold in pack of: {productData.packof}</span>
                             </>
                         }
                         {/* </Item> */}
