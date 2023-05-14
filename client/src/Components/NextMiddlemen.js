@@ -5,14 +5,29 @@ import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
 import { useState } from "react";
 import QR from "./QR";
+import { verifyAndNext } from "../connect";
 
 const NextmMiddlemen = () => {
-  const [myLocation, setMyLocation] = useState("");
+  const [productID, setProdID] = useState("");
+  const [shopname, setshopName] = useState("");
   const [myWallet, setMyWallet] = useState("");
 
   const [nextMenWallet, setNextMenWallet] = useState("");
   const [nextMenLocation, setNextMenLocation] = useState("");
  
+  const handleSubmit = () => {
+    // int name from login, localStorage
+    verifyAndNext(
+      productID,
+      shopname,
+      nextMenWallet,
+      nextMenLocation,
+      res => {
+        console.log(res.ret_value);
+        if (res.ret_value) alert("Details Added Successfully!");
+        else alert("Failed, Not a Valid Middleman!");
+    });
+  }
 
   return (
     <div style={{ padding: "2rem 0 2rem 0" }}>
@@ -27,6 +42,7 @@ const NextmMiddlemen = () => {
           alignItems: "center",
           minHeight: "70vh",
           margin: "0 auto",
+          minWidth:"460px" ,
         }}
         style={{ padding: "2rem 0 2rem 0" }}
         noValidate
@@ -39,33 +55,36 @@ const NextmMiddlemen = () => {
           <TextField
             style={{ minWidth: 200, width: "25rem" , marginTop:"2rem"}}
             variant="outlined"
-            id="outlined-my-loc"
-            label="My Location"
+            id="outlined-my-id"
+            label="Product ID"
             required={"true"}
             onChange={(e) => {
-              setMyLocation(e.target.value);
+              setProdID(e.target.value);
             }}
-            value={myLocation}
+            value={productID}
+          />
+          <TextField
+            style={{ minWidth: 200, width: "25rem" }}
+            variant="outlined"
+            id="outlined-my-name"
+            label="My Shop Name"
+            required={"true"}
+            onChange={(e) => {
+              setshopName(e.target.value);
+            }}
+            value={shopname}
           />
           <TextField
             style={{ minWidth: 200, width: "25rem" }}
             variant="outlined"
             id="outlined-my-addr"
-            label="My Wallet Address"
+            label="My Wallet Address (fetch auto)"
             required={"true"}
             onChange={(e) => {
               setMyWallet(e.target.value);
             }}
             value={myWallet}
           />
-
-          <Button
-            variant="contained"
-            style={{ marginTop: "1rem" }}
-           
-          >
-            Add my details to SupplyChain
-          </Button>
 
           <TextField
             style={{ minWidth: 200, width: "25rem", marginTop:"2rem" }}
@@ -91,7 +110,9 @@ const NextmMiddlemen = () => {
           />
           
         
-          <Button variant="contained" style={{ marginTop: "1rem" }}>
+          <Button variant="contained" style={{ marginTop: "1rem" }}
+            onClick={()=>handleSubmit()}
+          >
             Add Destination
           </Button>
         </Stack>
