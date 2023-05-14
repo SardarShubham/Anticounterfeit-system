@@ -50,7 +50,7 @@ export default function BasicTabs() {
   };
 
   return (
-    <Box sx={{ width: '20%', backgroundColor:"white"}}>
+    <Box sx={{ width: '20%', backgroundColor:"white", margin:'auto', minWidth:'330px'}}>
       <Box sx={{ borderBottom: 1, borderColor: '#ffffff' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab label="Manufacturer" {...a11yProps(0)} />

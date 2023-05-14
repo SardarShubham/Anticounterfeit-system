@@ -5,24 +5,39 @@ import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
 import { useState } from "react";
 import QR from "./QR";
+import { createItem } from "../connect";
 
 const AddPRoduct = () => {
   const [productName, setProductName] = useState("");
   const [productPrice, setProductPrice] = useState("");
-  const [productDesc, setProductDesc] = useState("");
-  const [manufDate, setManufDate] = useState("");
   const [salesMode, setSalesMode] = useState("");
-  const [nextMiddlemen, setNextmMiddlemen] = useState("");
   const [retailerName, setRetailerName] = useState("");
   const [retailerAddr, setRetailerAddr] = useState("");
+  const [qrID, setQRId] = useState(null);
 
-  const [isProductAdded, setIsPRoductAdded] = useState(false);
+
+  const handleSubmit = () => {
+    console.log("submit clicked");
+    // get manufacturer name and location from login, localeStorage
+    createItem(
+      productName,
+      "manu1",
+      retailerName,
+      retailerAddr,
+      productPrice,
+      salesMode,
+      "location1",
+      res => {
+        console.log(res);
+        setQRId(res.ret_id)
+    });
+  }
   return (
     <div style={{ padding: "2rem 0 2rem 0" }}>
       <Box
         component="form"
         sx={{
-          "& .MuiTextField-root": { marginTop: 1, width: "25ch" },
+          "& .MuiTextField-root": { marginTop: 1, width: "25ch"},
           width: "40%",
           backgroundColor: "white",
           display: "flex",
@@ -30,6 +45,7 @@ const AddPRoduct = () => {
           alignItems: "center",
           minHeight: "70vh",
           margin: "0 auto",
+          minWidth:"460px" ,
         }}
         style={{ padding: "2rem 0 2rem 0" }}
         noValidate
@@ -64,46 +80,13 @@ const AddPRoduct = () => {
           <TextField
             style={{ minWidth: 200, width: "25rem" }}
             variant="outlined"
-            id="outlined-desc"
-            label="Product Description"
-            required={"true"}
-            onChange={(e) => {
-              setProductDesc(e.target.value);
-            }}
-            value={productDesc}
-          />
-          <TextField
-            style={{ minWidth: 200, width: "25rem" }}
-            variant="outlined"
-            id="outlined-dom"
-            label="Date of Manufacturing"
-            required={"true"}
-            onChange={(e) => {
-              setManufDate(e.target.value);
-            }}
-            value={manufDate}
-          />
-          <TextField
-            style={{ minWidth: 200, width: "25rem" }}
-            variant="outlined"
             id="outlined-mode"
-            label="Sales Mode"
+            label="Sold in a pack of"
             required={"true"}
             onChange={(e) => {
               setSalesMode(e.target.value);
             }}
             value={salesMode}
-          />
-          <TextField
-            style={{ minWidth: 200, width: "25rem" }}
-            variant="outlined"
-            id="outlined-next"
-            label="Next Middlemen"
-            required={"true"}
-            onChange={(e) => {
-              setNextmMiddlemen(e.target.value);
-            }}
-            value={nextMiddlemen}
           />
           <TextField
             style={{ minWidth: 200, width: "25rem" }}
@@ -132,18 +115,18 @@ const AddPRoduct = () => {
             variant="contained"
             style={{ marginTop: "2rem" }}
             onClick={() => {
-              setIsPRoductAdded(true);
+              handleSubmit()
             }}
           >
             Add Product
           </Button>
 
-          {(isProductAdded)? 
-            <QR id={"23f"} name={productName} /> 
+          {(qrID)? 
+            <QR id={qrID} name={productName} /> 
             :
           <span style={{"paddingTop":"1rem", "color":"#000000"}}>Generated QR will be shown here.</span>}
 
-          <Button variant="contained" style={{ marginTop: "2rem" }} disabled={isProductAdded}>
+          <Button variant="contained" style={{ marginTop: "2rem" }} disabled={!qrID}>
             Print QR Code
           </Button>
         </Stack>
