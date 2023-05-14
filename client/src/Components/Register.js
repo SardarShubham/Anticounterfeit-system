@@ -73,7 +73,7 @@ const Register = () => {
           justifyContent: "center",
           alignItems: "center",
           minHeight: "70vh",
-          margin: "0 auto",
+          margin: "140px auto 50px",
         }}
         noValidate
         autoComplete="off"

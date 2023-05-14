@@ -28,9 +28,9 @@ const MiddlemenDB = () => {
     navigate = useNavigate();
 
     return ( 
-        <>
-        <h1>Middlemen's Dashboard</h1>
-        <h3>Product Details</h3>
+        <div style={{"minHeight":"800px"}}>
+        <h1  style={{"color":"#ffffff"}}>Middlemen's Dashboard</h1>
+        <h3  style={{"color":"#ffffff"}}>Product Details</h3>
             <TableContainer sx={{ width: '70%', 'margin':'0 auto' }}  component={Paper}>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead sx={{"backgroundColor":'#51AFF7'}}>
@@ -89,7 +89,7 @@ const MiddlemenDB = () => {
                 </Table>
             </TableContainer>
 
-    </>
+    </div>
      );
 }
  

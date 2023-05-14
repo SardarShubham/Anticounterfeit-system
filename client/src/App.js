@@ -14,31 +14,30 @@ import AddPRoduct from "./Components/AddProduct";
 import NextmMiddlemen from "./Components/NextMiddlemen";
 function App() {
   return (
-    <>      <Header />
-    <div className="App">
-      {/* <Dashboard/> */}
-      <Routes>
-        <Route exact path="/" element={<HomePage />} />
-        <Route exact path="/register" element={<Register />} />
-        
-        <Route exact path='/addproduct' element={<AddPRoduct/>}/>
+    <>
+      {" "}
+      <Header />
+      <div className="App">
+        {/* <Dashboard/> */}
+        <Routes>
+          <Route exact path="/" element={<HomePage />} />
+          <Route exact path="/register" element={<Register />} />
 
-        <Route exact path="/dashboard/manufacturer" element={<ManufcDB />} />
+          <Route exact path="/addproduct" element={<AddPRoduct />} />
 
-        <Route exact path="/dashboard/middlemen" element={<MiddlemenDB />} /> 
-        <Route exact path="/nextmen" element={<NextmMiddlemen />} /> 
+          <Route exact path="/dashboard/manufacturer" element={<ManufcDB />} />
 
-        <Route exact path="/dashboard/admin" element={<AdminDB />} /> 
+          <Route exact path="/dashboard/middlemen" element={<MiddlemenDB />} />
+          <Route exact path="/nextmen" element={<NextmMiddlemen />} />
 
-        <Route exact path="/verify" element={<Customer />} />
-        <Route exact path="/track" element={<Chain />} />
+          <Route exact path="/dashboard/admin" element={<AdminDB />} />
 
-      </Routes>
-
-    </div>
-    <Footer/>
+          <Route exact path="/verify" element={<Customer />} />
+          <Route exact path="/track" element={<Chain />} />
+        </Routes>
+      </div>
+      <Footer />
     </>
-
   );
 }
 

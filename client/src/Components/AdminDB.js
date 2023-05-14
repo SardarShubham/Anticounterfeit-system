@@ -59,9 +59,9 @@ const rows = [
 
 const AdminDB = () => {
   return (
-    <>
-      <h1>Admin's Dashboard</h1>
-      <h3>Company Details</h3>
+    <div style={{"minHeight":"800px"}}>
+      <h1 style={{"color":"#ffffff"}}>Admin's Dashboard</h1>
+      <h3 style={{"color":"#ffffff"}}>Company Details</h3>
       <TableContainer sx={{ width: "70%", margin: "0 auto" }} component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead sx={{ backgroundColor: "#51AFF7" }}>
@@ -90,7 +90,7 @@ const AdminDB = () => {
           </TableBody>
         </Table>
       </TableContainer>
-    </>
+    </div>
   );
 };
 

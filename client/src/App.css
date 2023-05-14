@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  margin-top: 5rem;
+  margin-top: 7rem;
   display: block;
 }
 
@@ -247,6 +247,7 @@ li{
   width: 100%;
   background-color: #ffffff;
   height: auto;
+  z-index: 1000;
 }
 .header-div ul{
   display: flex;
@@ -260,7 +261,7 @@ li{
 }
 
 .grid-cont{
-  height: 100vh;
+  /* height: 100vh; */
   margin-top: 10rem;
   background-color: #ffffff;
 }
@@ -283,4 +284,42 @@ a{
 
 .supply_chain{
   border: 1px solid;
+}
+
+.footer-wrapper {
+  padding-top: 2rem;
+  width: 100%;
+  background-color: white;
+  /* position: absolute; */
+  bottom: 0;
+}
+.footer-wrapper ul{
+  display: flex;
+  justify-content: space-around;
+}
+.footer-wrapper li{
+  font-size: large;
+  font-weight: bold;
+  color: rgb(27, 154, 251);
+}
+
+.hr-line{
+  /* border: #282c34;
+  border: 0 0 2px 0; */
+  width: 80%;
+  height: 1.6px;
+  margin: 0 auto;
+  background-color: #6c7179;
+}
+
+.social-icons-div{
+  width: 13%;
+  margin: 0 auto;
+}
+
+#rights-res{
+  margin: 0 auto;
+  color: #6c7179;
+  text-align: center;
+  padding: 1.5rem;
 }

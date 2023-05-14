@@ -41,7 +41,8 @@ const NextmMiddlemen = () => {
           justifyContent: "center",
           alignItems: "center",
           minHeight: "70vh",
-          margin: "0 auto",
+          margin: "50px auto 50px",
+        
           minWidth:"460px" ,
         }}
         style={{ padding: "2rem 0 2rem 0" }}
