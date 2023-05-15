@@ -11,6 +11,7 @@ import Paper from '@mui/material/Paper';
 import { Button } from '@mui/material';
 import { getAllItems } from '../connect';
 
+import { Link } from 'react-router-dom';
 function createData(srno, name, id, status, action) {
     return {srno, name, id, status, action};
 }
@@ -54,11 +55,12 @@ const ManufcDB = () => {
       });
     
     return ( 
-        <>
-        <h1>Manufacturer's Dashboard</h1>
-        <h3>Product Details</h3>
-            <TableContainer sx={{ width: '70%', 'margin':'0 auto',minWidth: '612px' }}  component={Paper}>
-                <Table sx={{ minWidth: '612px' }} aria-label="simple table">
+        <div style={{"minHeight":"800px"}}>
+        <h1 style={{"color":"#ffffff"}}>Manufacturer's Dashboard</h1>
+        <h3 style={{"color":"#ffffff"}}>Product Details</h3>
+        <Link to="/addproduct"><Button variant="contained" style={{"marginBottom":"2rem"}}>Add new Product</Button></Link>
+            <TableContainer sx={{ width: '70%', 'margin':'0 auto' }}  component={Paper}>
+                <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead sx={{"backgroundColor":'#51AFF7'}}>
                         <TableRow>
                             
@@ -109,7 +111,7 @@ const ManufcDB = () => {
                 </Table>
             </TableContainer>
 
-    </>
+    </div>
      );
 }
  

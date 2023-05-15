@@ -59,7 +59,7 @@ export default function Chain() {
 
     return(
 
-        <div>
+        <div  style={{minHeight:"800px"}}>
             <h1>Tracking Product - {prodID}</h1>
             <input className="man_inp" type={"text"} placeholder={"ID"} onChange={(e)=>setProdID(e.target.value)}/>
             <Button variant="contained" style={{ margin: "1rem" }}
