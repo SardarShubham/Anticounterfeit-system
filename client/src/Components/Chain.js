@@ -22,19 +22,8 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function Chain() {
   const [prodID, setProdID] = useState(null);
-  // const [chainData, setChain] = useState([]);
   const [productData, setProductData] = useState(null);
 
-  const chainData = [
-    ["manu1", "location1", "1684044854"],
-    ["nashik", "pune", "1684045077"],
-  ];
-
-  const steps = [
-    "Select master blaster campaign settings",
-    "Create an ad group",
-    "Create an ad",
-  ];
 
   const onTrack = () => {
     console.log("on track clicked!");
@@ -49,11 +38,11 @@ export default function Chain() {
   return (
     <div style={{ minHeight: "800px" }}>
       <div className="customer_container">
-        <h1>Tracking Product - {prodID}</h1>
-        {/* <input className="man_inp" type={"text"} placeholder={"ID"} onChange={(e)=>setProdID(e.target.value)}/> */}
+        <h1>Tracking Product</h1>
+        <input className="man_inp" type={"text"} placeholder={"Product ID"} value={prodID} onChange={(e)=>setProdID(e.target.value)}/>
 
         <QrReader
-          style={{ width: "200px", height: "200px" }}
+          style={{ width: "180px", height: "180px" }}
           onResult={(result, error) => {
             if (!!result) {
               setProdID(result?.text);
@@ -65,94 +54,97 @@ export default function Chain() {
           }}
           // style={{ width: '200px', height:'200px' }}
         />
-    </div>
-        <Button
-          variant="contained"
-          style={{ margin: "1rem" }}
-          onClick={() => onTrack()}
-        >
-          Get Details
-        </Button>
+      </div>
+      <Button
+        variant="contained"
+        style={{ margin: "5px" }}
+        onClick={() => onTrack()}
+      >
+        Get Details
+      </Button>
 
-        <Grid container spacing={4}>
-          <Grid item sm={6}>
-            <Box
-              sx={{
-                bgcolor: "background.default",
-              }}
-              // className="supply_chain"
-            >
-              <Item elevation={8}>
-                <h1>Product Supply Chain Details</h1>
-                {productData && (
-                  <Stepper
-                    activeStep={productData.history.length - 1}
-                    orientation="vertical"
-                  >
-                    {productData.history.map((item, i) => (
-                      <Step key={i}>
-                        <StepLabel>
-                          <span>
-                            {item[0]}, {item[1]}
-                          </span>
-                          <br />
-                          <span>Transaction Date: {item[2]}</span>
-                        </StepLabel>
-                      </Step>
-                    ))}
-                    {productData.currentOwner != productData.retailerAddr && (
-                      <Step key={productData.history.length}>
-                        <StepLabel>
-                          <span>{productData.retailerName}</span>
-                        </StepLabel>
-                      </Step>
-                    )}
-                  </Stepper>
-                )}
-              </Item>
-            </Box>
-          </Grid>
-          <Grid item sm={6}>
-            <Box
-              sx={{
-                bgcolor: "background.default",
-                textAlign: "left",
-                paddingLeft: "40px",
-              }}
-              // className="supply_chain"
-            >
-              {/* <Item elevation={8}> */}
-              {productData && (
-                <>
-                  <h2>Product Details</h2>
-                  <span>Product Id : {prodID}</span>
-                  <br />
-                  <span>Name: {productData.name}</span>
-                  <br />
-                  <span>Manufacturer: {productData.manufacturerName}</span>
-                  <br />
-                  <span>Retailer: {productData.retailerName}</span>
-                  <br />
-                  <span>MRP: {productData.price}</span>
-                  <br />
-                  <span>Sold in pack of: {productData.packof}</span>
-                </>
-              )}
-              {/* </Item> */}
-            </Box>
-            <Box>
-              {productData && (
-                <>
-                  {productData.isvalid ? (
-                    <h1>The Product is Genuine</h1>
-                  ) : (
-                    <h1>Product is not Genuine !</h1>
+      {
+        productData && 
+          <Grid container spacing={4}>
+            <Grid item sm={6}>
+              <Box
+                sx={{
+                  bgcolor: "background.default",
+                }}
+                // className="supply_chain"
+              >
+                <Item elevation={8}>
+                  <h1>Product Supply Chain Details</h1>
+                  {productData && (
+                    <Stepper
+                      activeStep={productData.history.length - 1}
+                      orientation="vertical"
+                    >
+                      {productData.history.map((item, i) => (
+                        <Step key={i}>
+                          <StepLabel>
+                            <span>
+                              {item[0]}, {item[1]}
+                            </span>
+                            <br />
+                            <span>Transaction Date: {item[2]}</span>
+                          </StepLabel>
+                        </Step>
+                      ))}
+                      {productData.currentOwner != productData.retailerAddr && (
+                        <Step key={productData.history.length}>
+                          <StepLabel>
+                            <span>{productData.retailerName}</span>
+                          </StepLabel>
+                        </Step>
+                      )}
+                    </Stepper>
                   )}
-                </>
-              )}
-            </Box>
+                </Item>
+              </Box>
+            </Grid>
+            <Grid item sm={6}>
+              <Box
+                sx={{
+                  bgcolor: "background.default",
+                  textAlign: "left",
+                  paddingLeft: "40px",
+                }}
+                // className="supply_chain"
+              >
+                {/* <Item elevation={8}> */}
+                {productData && (
+                  <>
+                    <h2>Product Details</h2>
+                    <span>Product Id : {prodID}</span>
+                    <br />
+                    <span>Name: {productData.name}</span>
+                    <br />
+                    <span>Manufacturer: {productData.manufacturerName}</span>
+                    <br />
+                    <span>Retailer: {productData.retailerName}</span>
+                    <br />
+                    <span>MRP: {productData.price}</span>
+                    <br />
+                    <span>Sold in pack of: {productData.packof}</span>
+                  </>
+                )}
+                {/* </Item> */}
+              </Box>
+              <Box>
+                {productData && (
+                  <>
+                    {productData.isvalid ? (
+                      <h1>The Product is Genuine</h1>
+                    ) : (
+                      <h1>Product is not Genuine !</h1>
+                    )}
+                  </>
+                )}
+              </Box>
+            </Grid>
           </Grid>
-        </Grid>
+      }
       </div>
   );
 }

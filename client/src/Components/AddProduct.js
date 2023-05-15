@@ -10,6 +10,8 @@ import { createItem } from "../connect";
 const AddPRoduct = () => {
   const [productName, setProductName] = useState("");
   const [productPrice, setProductPrice] = useState("");
+  const [manuName, setmanuName] = useState("");
+  const [manuLoc, setManLoc] = useState("");
   const [salesMode, setSalesMode] = useState("");
   const [retailerName, setRetailerName] = useState("");
   const [retailerAddr, setRetailerAddr] = useState("");
@@ -21,12 +23,12 @@ const AddPRoduct = () => {
     // get manufacturer name and location from login, localeStorage
     createItem(
       productName,
-      "manu1",
+      manuName,
       retailerName,
       retailerAddr,
       productPrice,
       salesMode,
-      "location1",
+      manuLoc,
       res => {
         console.log(res.ret_id);
         setQRId(res.ret_id)
@@ -76,6 +78,28 @@ const AddPRoduct = () => {
               setProductPrice(e.target.value);
             }}
             value={productPrice}
+          />
+          <TextField
+            style={{ minWidth: 200, width: "25rem" }}
+            variant="outlined"
+            id="outlined-manuName"
+            label="Manufacturer Name"
+            required={"true"}
+            onChange={(e) => {
+              setmanuName(e.target.value);
+            }}
+            value={manuName}
+          />
+          <TextField
+            style={{ minWidth: 200, width: "25rem" }}
+            variant="outlined"
+            id="outlined-manuLoc"
+            label="Manufacturer Location"
+            required={"true"}
+            onChange={(e) => {
+              setManLoc(e.target.value);
+            }}
+            value={manuLoc}
           />
           <TextField
             style={{ minWidth: 200, width: "25rem" }}
