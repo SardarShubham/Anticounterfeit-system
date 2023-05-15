@@ -11,7 +11,7 @@ export const isWalletExist = async () => {
     await window.ethereum.request({ method: "eth_requestAccounts" });
     window.web3 = new Web3(window.ethereum);
     let web3 = new Web3(Web3.givenProvider);
-    let con_addr = "0x4dA95Dc5A8bcf36bEaEe693b2e3E9aFF82768A32";
+    let con_addr = "0x24C8562773224Cc4Bef1A640bf69eC65C719e7b4";
     sampleContract = new web3.eth.Contract(sample_abi, con_addr);
     return true;
   }
@@ -36,11 +36,11 @@ export const getItem = async (_id, _callback) => {
           .get_details(_id)
           .send({
             from: acc,
-            gas,
+            gas: '6700000',
           })
           .then(res => {
-            console.log(res.events.details.returnValues.ret_data);
-            _callback(res.events.details.returnValues.ret_data);
+            console.log(res);
+            _callback(res.events.details.returnValues);
           })
           .catch((err) => {
             console.log(err);
@@ -80,11 +80,11 @@ export const createItem = async (name, manuName, retailerName, retailerAddr, mrp
           .create(name, manuName, retailerName, retailerAddr, mrp, packOf, location)
           .send({
             from: acc,
-            gas,
+            gas: '6700000',
           })
           .then(res => {
-            console.log(res.events.details.returnValues);
-            _callback(res.events.details.returnValues);
+            console.log(res.events.created.returnValues);
+            _callback(res.events.created.returnValues);
           })
           .catch((err) => {
             console.log(err);
@@ -127,11 +127,11 @@ export const verifyAndNext = async (prodID, int_name, nextAddr, loc, _callback) 
           .next_location(prodID, int_name, nextAddr, loc)
           .send({
             from: acc,
-            gas,
+            gas: '6700000',
           })
           .then(res => {
-            console.log(res.events.details.returnValues);
-            _callback(res.events.details.returnValues);
+            console.log(res.events.added_next.ret_value);
+            _callback(res.events.added_next.ret_value);
           })
           .catch((err) => {
             console.log(err);
@@ -159,11 +159,11 @@ export const getAllItems = async(_callback) => {
           .get_all()
           .send({
             from: acc,
-            gas,
+            gas: '6700000',
           })
           .then(res => {
-            console.log(res.events.details.returnValues);
-            _callback(res.events.details.returnValues);
+            // console.log(res.events.getall.returnValues.products);
+            _callback(res.events.getall.returnValues.products);
           })
           .catch((err) => {
             console.log(err);
@@ -183,18 +183,18 @@ export const sellItem = async(_id, _callback) => {
     const accs = await window.ethereum.enable();
     const acc = accs[0];
     sampleContract.methods
-      .invalidate(_id)
+      .invaidate(_id)
       .estimateGas()
       .then(gas => {
         return sampleContract.methods
-          .invalidate(_id)
+          .invaidate(_id)
           .send({
             from: acc,
-            gas,
+            gas: '6700000',
           })
           .then(res => {
-            console.log(res.events.details.returnValues);
-            _callback(res.events.details.returnValues);
+            console.log(res.events.invalidated.returnValues.ret_value);
+            _callback(res.events.invalidated.returnValues.ret_value);
           })
           .catch((err) => {
             console.log(err);
