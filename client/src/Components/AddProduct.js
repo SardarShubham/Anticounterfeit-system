@@ -28,7 +28,7 @@ const AddPRoduct = () => {
       salesMode,
       "location1",
       res => {
-        console.log(res);
+        console.log(res.ret_id);
         setQRId(res.ret_id)
     });
   }

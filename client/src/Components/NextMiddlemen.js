@@ -63,27 +63,27 @@ const NextmMiddlemen = () => {
             }}
             value={productID}
           />
+            <TextField
+              style={{ minWidth: 200, width: "25rem" }}
+              variant="outlined"
+              id="outlined-my-addr"
+              label="My Wallet Address (fetch auto)"
+              required={"true"}
+              onChange={(e) => {
+                setMyWallet(e.target.value);
+              }}
+              value={myWallet}
+            />
           <TextField
             style={{ minWidth: 200, width: "25rem" }}
             variant="outlined"
             id="outlined-my-name"
-            label="My Shop Name"
+            label="Next middlemen Name"
             required={"true"}
             onChange={(e) => {
               setshopName(e.target.value);
             }}
             value={shopname}
-          />
-          <TextField
-            style={{ minWidth: 200, width: "25rem" }}
-            variant="outlined"
-            id="outlined-my-addr"
-            label="My Wallet Address (fetch auto)"
-            required={"true"}
-            onChange={(e) => {
-              setMyWallet(e.target.value);
-            }}
-            value={myWallet}
           />
 
           <TextField
