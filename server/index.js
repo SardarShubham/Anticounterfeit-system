@@ -32,11 +32,13 @@ app.post('/login', (req, res) => {
     // // .then(middlemen => res.json({ middlemen, msg: 'Present' }))
     // // .catch(err => res.status(400).json({ error: 'Not Registered' }));
 
-    Middleman.findOne(email)
+    Middleman.find({"email":email, "password":password,"walladdr":walladdr})
     .then(data => {
       if (!data)
-        res.status(404).send({ message: "Not found Tutorial with id "  });
-      else res.send(data);
+        res.status(404).send({ message: "Not Registered"  });
+      else{
+        res.send(data[0].role);
+      }
     })
     .catch(err => {
       res

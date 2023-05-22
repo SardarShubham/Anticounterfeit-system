@@ -82,16 +82,26 @@ export default function BasicTabs() {
 
     axios
       .post('http://localhost:5000/login', {
-        'email': email,
-        'password': password,
-        'walladdr' : address[0],
+        'email': email.trim(),
+        'password': password.trim(),
+        'walladdr' : address[0].trim(),
       })
       .then((res) => {
-          alert("Successfully Logged In!!")
-          // setEmail('');
-          // setPassword('');
-          // setAddress('');
-          // navigate("/");
+          if(res.status==200){
+            alert("Successfully Logged In!!")
+          setEmail('');
+          setPassword('');
+          setAddress('');
+          let resp = JSON.stringify(res);
+          if(resp=="Manufacturer" || resp== "manufacturer")
+            navigate("/dashboard/manufacturer");
+          else 
+            navigate("/dashboard/middlemen");
+          }
+          
+          else{
+            alert("Not registered or wrong")
+          }
       })
       .catch((err) => {
         console.log('Not reistered!');
