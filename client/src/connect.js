@@ -11,7 +11,7 @@ export const isWalletExist = async () => {
     await window.ethereum.request({ method: "eth_requestAccounts" });
     window.web3 = new Web3(window.ethereum);
     let web3 = new Web3(Web3.givenProvider);
-    let con_addr = "0x24C8562773224Cc4Bef1A640bf69eC65C719e7b4";
+    let con_addr = "0x73F0446FAb2c0743bee94598E8156C9bf5b0cbD9";
     sampleContract = new web3.eth.Contract(sample_abi, con_addr);
     return true;
   }

@@ -4,8 +4,12 @@ import axios from "axios";
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
+
+  const navigate  =  useNavigate();
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -31,10 +35,10 @@ const Register = () => {
 
   const handleSubmit =(e)=>{
     
-    // if(!name || !email || !password || !location || !address || !role){
-    //   alert("Please enter all the fields!")
-    //   return;
-    // }
+    if(!name || !email || !password || !location || !address || !role){
+      alert("Please enter all the fields!")
+      return;
+    }
     
     e.preventDefault();
 
@@ -55,6 +59,7 @@ const Register = () => {
           setLocaton('');
           setPassword('');
           setAddress('');
+          navigate("/");
       })
       .catch((err) => {
         console.log('Error in CreateBook!');
