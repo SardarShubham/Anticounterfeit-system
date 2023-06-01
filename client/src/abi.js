@@ -207,6 +207,19 @@ export const sample_abi = [
         "type": "bool"
       }
     ],
+    "name": "sold",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "bool",
+        "name": "ret_value",
+        "type": "bool"
+      }
+    ],
     "name": "verify",
     "type": "event"
   },
@@ -404,6 +417,19 @@ export const sample_abi = [
       }
     ],
     "name": "invaidate",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "_id",
+        "type": "bytes32"
+      }
+    ],
+    "name": "sell",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"

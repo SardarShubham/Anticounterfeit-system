@@ -11,7 +11,7 @@ export const isWalletExist = async () => {
     await window.ethereum.request({ method: "eth_requestAccounts" });
     window.web3 = new Web3(window.ethereum);
     let web3 = new Web3(Web3.givenProvider);
-    let con_addr = "0x24C8562773224Cc4Bef1A640bf69eC65C719e7b4";
+    let con_addr = "0x20224fA73B22D380451bB12C4F3291242c250087";
     sampleContract = new web3.eth.Contract(sample_abi, con_addr);
     return true;
   }
@@ -130,8 +130,8 @@ export const verifyAndNext = async (prodID, int_name, nextAddr, loc, _callback) 
             gas: '6700000',
           })
           .then(res => {
-            console.log(res.events.added_next.ret_value);
-            _callback(res.events.added_next.ret_value);
+            console.log(res.events.added_next.returnValues);
+            _callback(res.events.added_next.returnValues);
           })
           .catch((err) => {
             console.log(err);
@@ -195,6 +195,37 @@ export const sellItem = async(_id, _callback) => {
           .then(res => {
             console.log(res.events.invalidated.returnValues.ret_value);
             _callback(res.events.invalidated.returnValues.ret_value);
+          })
+          .catch((err) => {
+            console.log(err);
+            alert("Something went wrong", err);
+          });
+      })
+      .catch((err) => {
+        console.log(err);
+        alert("Something went wrong", err);
+      });
+  } 
+}
+
+export const sellProd = async(_id, _callback) => {
+  const wallet = await isWalletExist();
+  if (wallet) {
+    const accs = await window.ethereum.enable();
+    const acc = accs[0];
+    sampleContract.methods
+      .sell(_id)
+      .estimateGas()
+      .then(gas => {
+        return sampleContract.methods
+          .sell(_id)
+          .send({
+            from: acc,
+            gas: '6700000',
+          })
+          .then(res => {
+            console.log(res.events.sold.returnValues.ret_value);
+            _callback(res.events.sold.returnValues.ret_value);
           })
           .catch((err) => {
             console.log(err);

@@ -6,6 +6,7 @@ import Stack from "@mui/material/Stack";
 import { useState } from "react";
 import QR from "./QR";
 import { verifyAndNext } from "../connect";
+import { useLocation } from "react-router-dom";
 
 const NextmMiddlemen = () => {
   const [productID, setProdID] = useState("");
@@ -14,11 +15,14 @@ const NextmMiddlemen = () => {
 
   const [nextMenWallet, setNextMenWallet] = useState("");
   const [nextMenLocation, setNextMenLocation] = useState("");
+  
+  const location = useLocation();
+  const PRODUCT_ID = location.state;
  
   const handleSubmit = () => {
     // int name from login, localStorage
     verifyAndNext(
-      productID,
+      PRODUCT_ID,
       shopname,
       nextMenWallet,
       nextMenLocation,
@@ -59,12 +63,13 @@ const NextmMiddlemen = () => {
             id="outlined-my-id"
             label="Product ID"
             required={"true"}
-            onChange={(e) => {
-              setProdID(e.target.value);
-            }}
-            value={productID}
+            // onChange={(e) => {
+            //   setProdID(e.target.value);
+            // }}
+            value={PRODUCT_ID}
+            // value={productID}
           />
-            <TextField
+            {/* <TextField
               style={{ minWidth: 200, width: "25rem" }}
               variant="outlined"
               id="outlined-my-addr"
@@ -74,7 +79,7 @@ const NextmMiddlemen = () => {
                 setMyWallet(e.target.value);
               }}
               value={myWallet}
-            />
+            /> */}
           <TextField
             style={{ minWidth: 200, width: "25rem" }}
             variant="outlined"

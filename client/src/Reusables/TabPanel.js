@@ -7,6 +7,8 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
+import { Link } from "react-router-dom";
+
 
 
 function TabPanel(props) {
@@ -46,6 +48,7 @@ export default function BasicTabs() {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
+    console.log(newValue);
     setValue(newValue);
   };
 
@@ -62,16 +65,23 @@ export default function BasicTabs() {
       <Stack spacing={2} direction="column">
         <TextField id="outlined-basic" label="Email Id" variant="outlined" size='small'/>
         <TextField id="outlined-basic" label="Password" variant="outlined"  size='small'/>
-        <TextField id="outlined-basic" label="Metamask Wallet Token" variant="outlined"  size='small'/>
-        <Button variant="contained">Log in</Button>
+        {/* <TextField id="outlined-basic" label="Metamask Wallet Token" variant="outlined"  size='small'/> */}
+        <Link to="/dashboard/manufacturer">
+          <Button variant="contained">Log in</Button>
+        </Link>
         <h4>New User? <a href='/register'>Register</a></h4>
         </Stack>
       </TabPanel>
       <TabPanel value={value} index={1}>
       <h2 style={{"color":"#000000"}}>Login to your Account</h2>
       <Stack spacing={2} direction="column">
-        <TextField id="outlined-basic" label="Metamask Wallet Token" variant="outlined"  size='small'/>
-        <Button variant="contained">Log in</Button>
+        {/* <TextField id="outlined-basic" label="Metamask Wallet Token" variant="outlined"  size='small'/> */}
+        
+        <TextField id="outlined-basic" label="Email Id" variant="outlined" size='small'/>
+        <TextField id="outlined-basic" label="Password" variant="outlined"  size='small'/>
+        <Link to="/dashboard/middlemen">
+          <Button variant="contained">Log in</Button>
+        </Link>
         </Stack>
       </TabPanel>
     </Box>

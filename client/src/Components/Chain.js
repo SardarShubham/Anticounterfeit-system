@@ -20,6 +20,13 @@ const Item = styled(Paper)(({ theme }) => ({
   padding: "25px",
 }));
 
+
+const MESSAGES = {
+  "SOLD" : "Product is Already SOLD!",
+  "REACHED" : "Product is Good to be Sold!",
+  "INVALIDATED" : "Product is Not Genuine, or is been Invalidated!",
+  "INTRANSIT" : "Product has not yet reached the Retailer, cannot be sold!"
+}
 export default function Chain() {
   const [prodID, setProdID] = useState(null);
   const [productData, setProductData] = useState(null);
@@ -134,11 +141,14 @@ export default function Chain() {
               <Box>
                 {productData && (
                   <>
-                    {productData.isvalid ? (
+                    {/* {productData.isvalid ? (
                       <h1>The Product is Genuine</h1>
                     ) : (
                       <h1>Product is not Genuine !</h1>
-                    )}
+                    )} */}
+                    {
+                      <h1 className="final_status">{MESSAGES[productData.status]}</h1>
+                    }
                   </>
                 )}
               </Box>

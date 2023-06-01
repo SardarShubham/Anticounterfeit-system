@@ -10,7 +10,9 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import { getAllItems, sellItem } from '../connect';
+import { getAllItems, sellItem, sellProd } from '../connect';
+import {CopyToClipboard} from 'react-copy-to-clipboard';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 let navigate;
 
 function createData(srno, name, id, from, status, action) {
@@ -33,10 +35,15 @@ const MiddlemenDB = () => {
     const handleInvalidate = (id) => {
         sellItem(id, res => {
             console.log(res);
-            alert("Product with id ", id, " invalidated successfully!")
+            alert("Product with Invalidated successfully!")
         });
+    }
 
-
+    const handleSell = (id) => {
+        sellProd(id, res => {
+            console.log(res);
+            alert("Product with id Sold successfully!")
+        });
     }
 
 
@@ -48,12 +55,16 @@ const MiddlemenDB = () => {
                 let tempArr = [];
                 res.forEach((element,i) => {
                     
-                    tempArr.push(createData(i, element.name, element.id, element.status, 
+                    tempArr.push(createData((i+1), element.name, element.id, element.status, 
                         <>
                             <Button variant="outlined" disabled={!element.isvalid} onClick={()=>handleInvalidate(element.id)}>Invalidate
                             </Button>
-                            <Button variant="outlined" disabled={!element.isvalid} onClick={()=>navigate("/nextmen")}>SEND FORWARD
-                            </Button>
+                            {
+                                element.status == "REACHED" ?
+                                <Button variant="outlined" disabled={!element.isvalid} onClick={()=>handleSell(element.id)}>SELL</Button>
+                                :
+                                <Button variant="outlined" disabled={!element.isvalid} onClick={()=>navigate("/nextmen", {state:element.id})}>SEND FORWARD</Button>
+                            }
                         </>
                         ))                });
                 console.log(tempArr);
@@ -106,7 +117,14 @@ const MiddlemenDB = () => {
                                     {row.name}
                                 </TableCell>
                                 <TableCell align="right">
-                                    {row.id}
+                                    <div style={{"display":"flex", "justifyContent":"space-around"}}>
+                                        <span className='prod_id'>{row.id}</span>
+                                        <CopyToClipboard text={row.id}
+                                        onCopy={() => console.log("copied")}>    
+                                        <ContentCopyIcon/>
+                                        {/* <button>Copy</button> */}
+                                        </CopyToClipboard>
+                                    </div>
                                 </TableCell>
                                 <TableCell align="right">
                                     {row.from}

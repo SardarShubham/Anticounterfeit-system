@@ -22,7 +22,7 @@ contract conV1 {
         uint packof;
         uint loc_Size;
         mapping(uint => Transit) history;
-        string status; // INTRANSIT, REACHED, SOLD
+        string status; // INTRANSIT, REACHED, READY_TO_SELL, INVALIDATED, SOLD
     }
 
     // bare minimum product struct
@@ -68,6 +68,7 @@ contract conV1 {
     );
     event getall(MinProduct[] products);
     event invalidated(bool ret_value);
+    event sold(bool ret_value);
 
     // method to create new product onto blockchain
     function create(string memory _ProductName, string memory _manuName, string memory _retailerName, address _retailerAddr, uint _price, uint _packof, string memory _location) public{
@@ -126,7 +127,7 @@ contract conV1 {
                 _loc,
                 block.timestamp
             );
-            if (P.retailerAddr == msg.sender) P.status = "REACHED";
+            if (P.retailerAddr == _addr) P.status = "REACHED";
             P.currentOwner = _addr;
             P.history[P.loc_Size] = newtransit;
             P.loc_Size++;
@@ -162,11 +163,21 @@ contract conV1 {
     function invaidate(bytes32 _id) public exists(_id){
         if (Products[_id].isvalid == true){
             Products[_id].isvalid = false;
-            Products[_id].status = "SOLD";
+            Products[_id].status = "INVALIDATED";
             emit invalidated(true);
         }
         else emit invalidated(false);
 
+    }
+
+    // to sell product
+    function sell(bytes32 _id) public exists(_id){
+        if (Products[_id].isvalid == true){
+            Products[_id].isvalid = false;
+            Products[_id].status = "SOLD";
+            emit sold(true);
+        }
+        else emit sold(false);
     }
 
     function get_all() public {

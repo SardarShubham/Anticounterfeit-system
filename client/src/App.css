@@ -323,3 +323,15 @@ a{
   text-align: center;
   padding: 1.5rem;
 }
+
+.prod_id{
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 150px;
+}
+
+.final_status{
+  color:snow;
+}

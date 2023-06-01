@@ -10,6 +10,8 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Button } from '@mui/material';
 import { getAllItems, sellItem } from '../connect';
+import {CopyToClipboard} from 'react-copy-to-clipboard';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 
 import { Link } from 'react-router-dom';
 function createData(srno, name, id, status, action) {
@@ -38,7 +40,7 @@ const ManufcDB = () => {
                 let tempArr = [];
                 res.forEach((element,i) => {
                     
-                    tempArr.push(createData(i, element.name, element.id, element.status, <Button variant="outlined" disabled={!element.isvalid} onClick={()=>handleInvalidate(element.id)}>Invalidate</Button>))
+                    tempArr.push(createData((i+1), element.name, element.id, element.status, <Button variant="outlined" disabled={!element.isvalid} onClick={()=>handleInvalidate(element.id)}>Invalidate</Button>))
                 });
                 console.log(tempArr);
                 setProductData(tempArr);
@@ -57,6 +59,10 @@ const ManufcDB = () => {
             <Button variant="contained" style={{"marginBottom":"2rem"}}>Add new Product</Button>
         </Link>
         <Button variant="contained" style={{"marginBottom":"2rem"}} onClick={fetchTableData}>Refresh Table</Button>
+        <br/>
+        
+      <div>
+      </div>
             <TableContainer sx={{ width: '70%', 'margin':'0 auto' }}  component={Paper}>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead sx={{"backgroundColor":'#51AFF7'}}>
@@ -94,7 +100,14 @@ const ManufcDB = () => {
                                     {row.name}
                                 </TableCell>
                                 <TableCell align="right">
-                                    {row.id}
+                                    <div style={{"display":"flex", "justifyContent":"space-around"}}>
+                                        <span className='prod_id'>{row.id}</span>
+                                        <CopyToClipboard text={row.id}
+                                        onCopy={() => console.log("copied")}>    
+                                        <ContentCopyIcon/>
+                                        {/* <button>Copy</button> */}
+                                        </CopyToClipboard>
+                                    </div>
                                 </TableCell>
                                 <TableCell align="right">
                                     {row.status}
