@@ -15,7 +15,7 @@ const AddPRoduct = () => {
   const [salesMode, setSalesMode] = useState("");
   const [retailerName, setRetailerName] = useState("");
   const [retailerAddr, setRetailerAddr] = useState("");
-  const [qrID, setQRId] = useState("0x6379ef4de5dde44b770c81ea3c536964e2c25ebe64b3d4954e5d4ba8a70ab88f");
+  const [qrID, setQRId] = useState(null);
 
 
   const handleSubmit = () => {

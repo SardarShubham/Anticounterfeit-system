@@ -79,7 +79,7 @@ const Register = () => {
         autoComplete="off"
       >
         <Stack>
-          <h1 style={{ color: "#000000" }}>Middlemen</h1>
+          <h1 style={{ color: "#000000" }}>Register</h1>
           <TextField
             id="outlined-role"
             label="Role"
